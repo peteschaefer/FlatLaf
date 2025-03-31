@@ -331,6 +331,12 @@ public class FlatSplitPaneUI
 			if( "plain".equals( style ) )
 				return;
 
+			//	don't paint grip if dot size is larger than height/width
+			if (getOrientation()==JSplitPane.VERTICAL_SPLIT && gripDotSize > height)
+				return;
+			if (getOrientation()!=JSplitPane.VERTICAL_SPLIT && gripDotSize > width)
+				return;
+
 			Object[] oldRenderingHints = FlatUIUtils.setRenderingHints( g );
 
 			g.setColor( gripColor );
